@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import styled from 'styled-components';
+import Dokidoki from './components/Dokidoki';
 
 const Container = styled.div`
   width: 100vw;
@@ -20,6 +21,7 @@ class App extends Component {
       <Container>
         <Header />
         <Main>
+          <Dokidoki/>
           <h1>ドキドキ</h1>
           <h1>ふわふわ</h1>
           <h1>タイプタイプ</h1>
