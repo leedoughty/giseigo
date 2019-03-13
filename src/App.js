@@ -7,11 +7,24 @@ const Container = styled.div`
   height: 100vh;
 `;
 
+const Main = styled.div`
+  position: absolute;
+  top: 15vh;
+  left: 30vw;
+  font-size: 30px;
+`
+
 class App extends Component {
   render() {
     return (
       <Container>
         <Header />
+        <Main>
+          <h1>ドキドキ</h1>
+          <h1>ふわふわ</h1>
+          <h1>タイプタイプ</h1>
+          <h1>キラキラ</h1>
+        </Main>
       </Container>
     );
   }
