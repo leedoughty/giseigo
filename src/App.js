@@ -16,17 +16,44 @@ const Main = styled.div`
 `
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      isNotClicked: true,
+    };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick = (e) => {
+    this.setState({
+      isNotClicked: false,
+    });
+  }
+
   render() {
+    const handleClick = (e) => {
+      e.preventDefault();
+      console.log('the link was clicked');
+      this.handleClick();
+    }
+    const isNotClicked = this.state.isNotClicked;
+
     return (
       <Container>
         <Header />
+
         <Main>
-          <Dokidoki/>
-          <h1>ドキドキ</h1>
-          <h1>ふわふわ</h1>
-          <h1>タイプタイプ</h1>
-          <h1>キラキラ</h1>
+        {isNotClicked ? (
+          <React.Fragment>
+              <h1 onClick={handleClick}>ドキドキ</h1>
+              <h1>ふわふわ</h1>
+              <h1>タイプタイプ</h1>
+              <h1>キラキラ</h1>
+          </React.Fragment>) : (<Dokidoki onClick={handleClick}/>
+        )}
+
         </Main>
+
       </Container>
     );
   }
