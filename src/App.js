@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import styled from 'styled-components';
 import Dokidoki from './components/Dokidoki';
+import Nav from './components/Nav';
 
 const Container = styled.div`
   width: 100vw;
@@ -53,6 +54,7 @@ class App extends Component {
         )}
 
         </Main>
+        <Nav/>
 
       </Container>
     );
