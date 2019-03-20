@@ -33,27 +33,27 @@ const HeartbeatAnimation = styled.span`
   animation: ${Heartbeat} 0.4s ease infinite;
 `;
 
+let wordsArray = ["ドキドキ", "ふわふわ", "タイプタイプ", "キラキラ"];
+
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       isNotClicked: true,
+      text: "ドキドキ"
     };
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick = (e) => {
+  handleClick = (i) => {
+    console.log(wordsArray[i]);
     this.setState({
       isNotClicked: false,
+      text: wordsArray[i]
     });
   }
 
   render() {
-    const handleClick = (e) => {
-      e.preventDefault();
-      console.log('the link was clicked');
-      this.handleClick();
-    }
     const isNotClicked = this.state.isNotClicked;
 
     return (
@@ -63,15 +63,19 @@ class App extends Component {
         <Main>
         {isNotClicked ? (
           <React.Fragment>
-              <h1 onClick={handleClick}>ドキドキ</h1>
-              <h1>ふわふわ</h1>
-              <h1>タイプタイプ</h1>
-              <h1>キラキラ</h1>
+            {
+              wordsArray.map((word, i) => {
+                return (
+                  <h1
+                    onClick={() => this.handleClick(i)}
+                    key={i}>{word}
+                  </h1>)
+              })
+            }
           </React.Fragment>) : (
             <Word
-              text="ドキドキ"
+              text={this.state.text}
               animation={HeartbeatAnimation}
-              onClick={handleClick}
             />
         )}
 

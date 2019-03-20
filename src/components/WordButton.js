@@ -12,7 +12,6 @@ class WordButton extends Component {
   render() {
     return (
       <Word>
-        <p>word</p>
       </Word>
     )
   }
