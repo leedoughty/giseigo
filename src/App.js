@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './components/Header';
 import styled from 'styled-components';
 import Dokidoki from './components/Dokidoki';
+import Word from './components/Word';
 import Nav from './components/Nav';
 
 const Container = styled.div`
@@ -50,7 +51,7 @@ class App extends Component {
               <h1>ふわふわ</h1>
               <h1>タイプタイプ</h1>
               <h1>キラキラ</h1>
-          </React.Fragment>) : (<Dokidoki onClick={handleClick}/>
+          </React.Fragment>) : (<Word onClick={handleClick}/>
         )}
 
         </Main>
