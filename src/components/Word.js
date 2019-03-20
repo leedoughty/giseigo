@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 
 const Container = styled.div`
   overflow: hidden;
@@ -17,9 +17,12 @@ const Container = styled.div`
 
 class Word extends Component {
   render() {
+    let Animation = this.props.animation;
     return (
       <Container>
-        <p>ドキドキ</p>
+        <Animation>
+          <p>{this.props.text}</p>
+        </Animation>
       </Container>
     )
   }

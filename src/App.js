@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
-import styled from 'styled-components';
+import styled, {keyframes} from 'styled-components';
 import Dokidoki from './components/Dokidoki';
 import Word from './components/Word';
 import Nav from './components/Nav';
@@ -16,6 +16,22 @@ const Main = styled.div`
   left: 30vw;
   font-size: 30px;
 `
+
+const Heartbeat = keyframes`
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+  100% {
+    transform: scale(1);
+  }
+`;
+
+const HeartbeatAnimation = styled.span`
+  animation: ${Heartbeat} 0.4s ease infinite;
+`;
 
 class App extends Component {
   constructor(props) {
@@ -51,7 +67,12 @@ class App extends Component {
               <h1>ふわふわ</h1>
               <h1>タイプタイプ</h1>
               <h1>キラキラ</h1>
-          </React.Fragment>) : (<Word onClick={handleClick}/>
+          </React.Fragment>) : (
+            <Word
+              text="ドキドキ"
+              animation={HeartbeatAnimation}
+              onClick={handleClick}
+            />
         )}
 
         </Main>
