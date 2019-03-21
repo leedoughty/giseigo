@@ -33,14 +33,34 @@ const HeartbeatAnimation = styled.span`
   animation: ${Heartbeat} 0.4s ease infinite;
 `;
 
-let wordsArray = ["ドキドキ", "ふわふわ", "タイプタイプ", "キラキラ"];
+const Spin = keyframes`
+  0% {
+    transform: rotateY(0deg);
+  }
+  100% {
+    transform: rotateY(360deg);
+  }
+`;
+
+const SpinningAnimation = styled.div`
+  margin: 0 50px 0 50px;
+  width: 0px;
+  font-size: 100px;
+  animation: ${Spin} 0.4s ease infinite;
+`;
+
+let animationsArray = [HeartbeatAnimation, SpinningAnimation];
+
+let wordsArray = ["ドキドキ", "くるくる", "タイプタイプ", "キラキラ"];
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // TODO reverse clicked state so it is clearer
       isNotClicked: true,
-      text: "ドキドキ"
+      text: "ドキドキ",
+      animation: undefined
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -49,9 +69,12 @@ class App extends Component {
     console.log(wordsArray[i]);
     this.setState({
       isNotClicked: false,
-      text: wordsArray[i]
+      text: wordsArray[i],
+      animation: animationsArray[i]
     });
   }
+
+  // TODO add toggle function for header, pass function to header, in header file, onclick call that function
 
   render() {
     const isNotClicked = this.state.isNotClicked;
@@ -75,7 +98,7 @@ class App extends Component {
           </React.Fragment>) : (
             <Word
               text={this.state.text}
-              animation={HeartbeatAnimation}
+              animation={this.state.animation}
             />
         )}
 
