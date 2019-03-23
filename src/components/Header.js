@@ -12,6 +12,7 @@ const Title = styled.div`
   position: absolute;
   font-size: 2em;
   left: 30px;
+  cursor: default;
 `;
 
 const About = styled.div`
@@ -21,11 +22,36 @@ const About = styled.div`
 `;
 
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      titleText: "Giseigo",
+      aboutText: "About"
+    }
+  }
+
+  onMouseover(e) {
+    this.setState({
+      titleText: "擬声語",
+      aboutText: "について"
+    })
+  }
+
+  onMouseout(e) {
+    this.setState({
+      titleText: "Giseigo",
+      aboutText: "About"
+    })
+  }
+
   render() {
+    const {titleText, aboutText} = this.state;
     return (
       <HeaderContainer>
-        <Title>Giseigo</Title>
-        <About>About</About>
+        <Title onMouseEnter={this.onMouseover.bind(this)}
+        onMouseLeave={this.onMouseout.bind(this)}>{titleText}</Title>
+        <About onMouseEnter={this.onMouseover.bind(this)}
+        onMouseLeave={this.onMouseout.bind(this)}>{aboutText}</About>
       </HeaderContainer>
     )
   }
