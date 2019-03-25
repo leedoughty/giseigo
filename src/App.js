@@ -3,7 +3,7 @@ import Header from './components/Header';
 import styled from 'styled-components';
 import Word from './components/Word';
 import Nav from './components/Nav';
-import {HeartbeatAnimation, SpinningAnimation} from './components/Animations.js';
+import {HeartbeatAnimation, SpinningAnimation, ShakingAnimation} from './components/Animations.js';
 
 const Container = styled.div`
   width: 100vw;
@@ -17,9 +17,9 @@ const Main = styled.div`
   font-size: 30px;
 `
 
-let animationsArray = [HeartbeatAnimation, SpinningAnimation];
+let animationsArray = [HeartbeatAnimation, SpinningAnimation, ShakingAnimation];
 
-let wordsArray = ["ドキドキ", "くるくる", "タイプタイプ", "キラキラ"];
+let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
 
 class App extends Component {
   constructor(props) {
