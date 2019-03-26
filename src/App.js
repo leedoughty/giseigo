@@ -42,14 +42,18 @@ class App extends Component {
     });
   }
 
-  // TODO add toggle function for header, pass function to header, in header file, onclick call that function
+  toggleHeader = () => {
+    this.setState({
+      isNotClicked: true
+    })
+  }
 
   render() {
     const isNotClicked = this.state.isNotClicked;
 
     return (
       <Container>
-        <Header />
+        <Header onClick={this.toggleHeader} />
 
         <Main>
         {isNotClicked ? (

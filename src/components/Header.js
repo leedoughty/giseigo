@@ -5,7 +5,8 @@ const HeaderContainer = styled.header`
   top: 20px;
   left: 0;
   right: 0;
-  position: fixed;
+  position: relative;
+  height: 40px;
 `;
 
 const Title = styled.div`
@@ -47,7 +48,7 @@ class Header extends Component {
   render() {
     const {titleText, aboutText} = this.state;
     return (
-      <HeaderContainer>
+      <HeaderContainer onClick={this.props.onClick}>
         <Title onMouseEnter={this.onMouseover.bind(this)}
         onMouseLeave={this.onMouseout.bind(this)}>{titleText}</Title>
         <About onMouseEnter={this.onMouseover.bind(this)}
