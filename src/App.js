@@ -25,19 +25,19 @@ let animationsArray = [HeartbeatAnimation, SpinningAnimation, ShakingAnimation];
 let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
 
 const PageMap = {
-  japanese: Dokidoki,
-  about: About
+  animation: (props) => <Word {...props}/>,
+  about: (props) => <About {...props}/>,
+  navigation: (props) => <Nav {...props} />,
 }
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // TODO reverse clicked state so it is clearer
       isNotClicked: true,
       text: "ドキドキ",
       animation: undefined,
-      showPage: 'japanese'
+      showPage: 'navigation',
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -45,7 +45,7 @@ class App extends Component {
   handleClick = (i) => {
     console.log(wordsArray[i]);
     this.setState({
-      isNotClicked: false,
+      showPage: 'animation',
       text: wordsArray[i],
       animation: animationsArray[i]
     });
@@ -53,13 +53,15 @@ class App extends Component {
 
   toggleHeader = () => {
     this.setState({
-      isNotClicked: true
+      isNotClicked: true,
+      showPage: 'navigation'
     })
   }
 
   toggleAbout = () => {
     this.setState({
-      aboutIsOpen: true
+      aboutIsOpen: true,
+      showPage: 'about'
     })
   }
 
@@ -68,32 +70,18 @@ class App extends Component {
 
     return (
       <Container>
-        <Header onClick={this.toggleHeader} />
+        <Header toggleHeader={this.toggleHeader} toggleAbout={this.toggleAbout}/>
         <Main>
-
-        {/*} {pageMap.map(page => (
-        //   page === this.state.showPage ? pageMap[displayPage] : null
-         ))} */}
-
-        {isNotClicked ? (
-          <React.Fragment>
-            {
-              wordsArray.map((word, i) => {
-                return (
-                  <h1
-                    onClick={() => this.handleClick(i)}
-                    key={i}>{word}
-                  </h1>)
-              })
-            }
-          </React.Fragment>) : (
-            <Word
-              text={this.state.text}
-              animation={this.state.animation}
-            />
-        )}
+         {
+           PageMap[this.state.showPage]({
+             handleClick: this.handleClick,
+             text: this.state.text,
+             animation: this.state.animation,
+             toggleHeader: this.state.navigation,
+             toggleAbout: this.state.about,
+           })
+         } 
         </Main>
-        <Nav/>
       </Container>
     );
   }

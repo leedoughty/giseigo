@@ -1,12 +1,20 @@
 import React, { Component } from 'react';
-import WordButton from './WordButton';
+
+let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
 
 class Nav extends Component {
   render() {
     return (
-      <WordButton/>
-    )
-  }
+      wordsArray.map((word, i) => {
+        return (
+          <h1
+            onClick={() => this.props.handleClick(i)}
+            key={i}>{word}
+          </h1>)}
+      )
+  )}
 }
+
+
 
 export default Nav;

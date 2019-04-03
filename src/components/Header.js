@@ -50,9 +50,9 @@ class Header extends Component {
     const {titleText, aboutText} = this.state;
     return (
       <HeaderContainer>
-        <Title onClick={this.props.onClick} onMouseEnter={this.onMouseover.bind(this)}
+        <Title onClick={this.props.toggleHeader} onMouseEnter={this.onMouseover.bind(this)}
         onMouseLeave={this.onMouseout.bind(this)}>{titleText}</Title>
-        <About onMouseEnter={this.onMouseover.bind(this)}
+        <About onClick={this.props.toggleAbout} onMouseEnter={this.onMouseover.bind(this)}
         onMouseLeave={this.onMouseout.bind(this)}>{aboutText}</About>
       </HeaderContainer>
     )
