@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Word from './components/Word';
 import Nav from './components/Nav';
 import {HeartbeatAnimation, SpinningAnimation, ShakingAnimation} from './components/Animations.js';
+import About from './components/About';
 
 const Container = styled.div`
   width: 100vw;
@@ -13,13 +14,20 @@ const Container = styled.div`
 const Main = styled.div`
   position: absolute;
   top: 15vh;
-  left: 30vw;
+  left: 35vw;
+  display: grid;
+  place-items: center center;
   font-size: 30px;
+  cursor: pointer;
 `
 
 let animationsArray = [HeartbeatAnimation, SpinningAnimation, ShakingAnimation];
-
 let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
+
+const PageMap = {
+  japanese: Dokidoki,
+  about: About
+}
 
 class App extends Component {
   constructor(props) {
@@ -28,7 +36,8 @@ class App extends Component {
       // TODO reverse clicked state so it is clearer
       isNotClicked: true,
       text: "ドキドキ",
-      animation: undefined
+      animation: undefined,
+      showPage: 'japanese'
     };
     this.handleClick = this.handleClick.bind(this);
   }
@@ -48,14 +57,24 @@ class App extends Component {
     })
   }
 
+  toggleAbout = () => {
+    this.setState({
+      aboutIsOpen: true
+    })
+  }
+
   render() {
     const isNotClicked = this.state.isNotClicked;
 
     return (
       <Container>
         <Header onClick={this.toggleHeader} />
-
         <Main>
+
+        {/*} {pageMap.map(page => (
+        //   page === this.state.showPage ? pageMap[displayPage] : null
+         ))} */}
+
         {isNotClicked ? (
           <React.Fragment>
             {
@@ -73,10 +92,8 @@ class App extends Component {
               animation={this.state.animation}
             />
         )}
-
         </Main>
         <Nav/>
-
       </Container>
     );
   }

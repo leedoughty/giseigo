@@ -13,13 +13,14 @@ const Title = styled.div`
   position: absolute;
   font-size: 2em;
   left: 30px;
-  cursor: default;
+  cursor: pointer;
 `;
 
 const About = styled.div`
   position: absolute;
   font-size: 2em;
   right: 30px;
+  cursor: pointer;
 `;
 
 class Header extends Component {
@@ -30,7 +31,7 @@ class Header extends Component {
       aboutText: "About"
     }
   }
-
+  
   onMouseover(e) {
     this.setState({
       titleText: "擬声語",
@@ -48,8 +49,8 @@ class Header extends Component {
   render() {
     const {titleText, aboutText} = this.state;
     return (
-      <HeaderContainer onClick={this.props.onClick}>
-        <Title onMouseEnter={this.onMouseover.bind(this)}
+      <HeaderContainer>
+        <Title onClick={this.props.onClick} onMouseEnter={this.onMouseover.bind(this)}
         onMouseLeave={this.onMouseout.bind(this)}>{titleText}</Title>
         <About onMouseEnter={this.onMouseover.bind(this)}
         onMouseLeave={this.onMouseout.bind(this)}>{aboutText}</About>
