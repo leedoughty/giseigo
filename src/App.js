@@ -19,7 +19,7 @@ const Main = styled.div`
   place-items: center center;
   font-size: 30px;
   cursor: pointer;
-`
+`;
 
 let animationsArray = [HeartbeatAnimation, SpinningAnimation, ShakingAnimation];
 let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
@@ -34,7 +34,6 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      isNotClicked: true,
       text: "ドキドキ",
       animation: undefined,
       showPage: 'navigation',
@@ -43,7 +42,6 @@ class App extends Component {
   }
 
   handleClick = (i) => {
-    console.log(wordsArray[i]);
     this.setState({
       showPage: 'animation',
       text: wordsArray[i],
@@ -53,7 +51,6 @@ class App extends Component {
 
   toggleHeader = () => {
     this.setState({
-      isNotClicked: true,
       showPage: 'navigation'
     })
   }
@@ -66,8 +63,6 @@ class App extends Component {
   }
 
   render() {
-    const isNotClicked = this.state.isNotClicked;
-
     return (
       <Container>
         <Header toggleHeader={this.toggleHeader} toggleAbout={this.toggleAbout}/>
