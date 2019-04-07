@@ -12,9 +12,8 @@ const Container = styled.div`
 `;
 
 const Main = styled.div`
-  position: absolute;
-  top: 15vh;
-  left: 35vw;
+  position: relative;
+  top: 10vh;
   display: grid;
   place-items: center center;
   font-size: 30px;
@@ -43,9 +42,9 @@ class App extends Component {
 
   handleClick = (i) => {
     this.setState({
-      showPage: 'animation',
       text: wordsArray[i],
-      animation: animationsArray[i]
+      animation: animationsArray[i],
+      showPage: 'animation',
     });
   }
 
@@ -57,7 +56,6 @@ class App extends Component {
 
   toggleAbout = () => {
     this.setState({
-      aboutIsOpen: true,
       showPage: 'about'
     })
   }
