@@ -9,7 +9,7 @@ const AboutText = styled.p`
 
 const About = () => (
   <AboutText>
-    japanese onomatopoeia
+    "Giseigo" refer to onomatopoeia sound effects in the Japanese language. Used in everyday speech, these words add motion to everyday language, and can be used in grammatically correct sentences in place of verbs. If you have any suggestions for improvements, please get in touch or submit a pull request!
   </AboutText>
 )
 
