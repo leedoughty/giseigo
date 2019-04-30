@@ -34,6 +34,9 @@ export const SpinningAnimation = styled.div`
   width: 500px;
   font-size: 100px;
   animation: ${Spin} 0.4s linear infinite;
+  @media (max-width: 768px) {
+    width: 100px;
+  }
 `;
 
 // GURARIGURARI - SHAKING //
@@ -55,4 +58,7 @@ export const Shaking = keyframes`
 export const ShakingAnimation = styled.h1`
   font-size: 100px;
   animation: ${Shaking} 0.8s linear infinite;
+  @media (max-width: 768px) {
+    width: 300px;
+  }
 `;
