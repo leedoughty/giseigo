@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const AboutText = styled.p`
+  padding: 2em;
   font-size: 30px;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
 `
 
 const About = () => (
