@@ -18,12 +18,18 @@ const Container = styled.div`
 class Word extends Component {
   render() {
     let Animation = this.props.animation;
+    let Sentence = this.props.japaneseSentence;
     return (
+      <>
       <Container>
         <Animation>
           <p>{this.props.text}</p>
         </Animation>
       </Container>
+        <Sentence>
+          {this.props.japaneseSentence}
+        </Sentence>
+      </>
     )
   }
 }

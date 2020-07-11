@@ -5,6 +5,7 @@ import Word from './components/Word';
 import Nav from './components/Nav';
 import {HeartbeatAnimation, SpinningAnimation, ShakingAnimation} from './components/Animations.js';
 import About from './components/About';
+import JapaneseSentence from './components/JapaneseSentence';
 
 const Container = styled.div`
   width: 100vw;
@@ -22,10 +23,12 @@ const Main = styled.div`
 
 let animationsArray = [HeartbeatAnimation, SpinningAnimation, ShakingAnimation];
 let wordsArray = ["ドキドキ", "くるくる", "ぐらりぐらり"];
+let japaneseSentenceArray = ["心がドキドキする", "木の葉が庭でくるくる舞っていた", "小船はあらしの中でぐらりぐらりと揺れた"];
 
 const PageMap = {
   animation: (props) => <Word {...props}/>,
   about: (props) => <About {...props}/>,
+  japaneseSentence: (props) => <JapaneseSentence {...props}/>,
   navigation: (props) => <Nav {...props} />,
 }
 
@@ -35,6 +38,7 @@ class App extends Component {
     this.state = {
       text: "ドキドキ",
       animation: undefined,
+      japaneseSentence: '',
       showPage: 'navigation',
     };
     this.handleClick = this.handleClick.bind(this);
@@ -44,6 +48,7 @@ class App extends Component {
     this.setState({
       text: wordsArray[i],
       animation: animationsArray[i],
+      japaneseSentence: japaneseSentenceArray[i],
       showPage: 'animation',
     });
   }
@@ -70,6 +75,7 @@ class App extends Component {
              handleClick: this.handleClick,
              text: this.state.text,
              animation: this.state.animation,
+             japaneseSentence: this.state.japaneseSentence,
              toggleHeader: this.state.navigation,
              toggleAbout: this.state.about,
            })

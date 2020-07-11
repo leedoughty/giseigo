@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
+const SentenceContainer = styled.div`
   font-size: 25px;
   bottom: 20px;
   width: 100vw;
@@ -9,14 +9,15 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: absolute;
+  border: 1px red solid;
 `;
 
 class JapaneseSentence extends Component {
   render() {
     return (
-      <Container>
-        <p>心がドキドキする</p>
-      </Container>
+      <SentenceContainer>
+        <p>{this.props.japaneseSentence}</p>
+      </SentenceContainer>
     )
   }
 }
